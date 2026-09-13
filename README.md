@@ -49,16 +49,6 @@ Three pages carry you from wake-up to endgame:
 
 And the one doctrine that explains every API in the game: **branch on `result.status`, never on `result.message`**. See [Command Results](Start%20Here/Command%20Results.md).
 
-## House rules
-
-Conventions the whole vault follows, useful if you extend it:
-
-- One page per machine and per type. Frontmatter `aliases` carry component ids (`o2gen_1`) and API type names (`NavModule`), so links resolve the same way scripts read.
-- `SELF ONLY` methods are flagged in their headings: they only run on that machine's own script slot.
-- Outcome tables enumerate every documented `.status` code. Messages are never load-bearing.
-- Tables over prose for anything enumerable. No em dashes, anywhere.
-- A commit should leave the checker at zero: every `[[link]]` resolves against filenames plus aliases.
-
 ## Rebuilding for a newer game build
 
 The vault is regenerated from the player-documentation PDF the game exports (text extraction, page rewrite, link check). The PDF itself is deliberately not in this repo; it belongs to the game's developers. To update: drop the new export next to the vault, rewrite what changed, bump the build number here and on `Home.md`, and keep broken links at zero.
