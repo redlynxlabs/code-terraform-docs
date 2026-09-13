@@ -1,0 +1,11 @@
+# Obsidian workspace state (per-machine, noisy)
+.obsidian/
+
+# Official game documentation export: source material, not ours to redistribute
+Code_ Terraform.pdf
+*.pdf
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
