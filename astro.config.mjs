@@ -24,6 +24,17 @@ export default defineConfig({
         'Unofficial field documentation for Code: Terraform. Every machine API, every type, every recipe, readable outside the game.',
       logo: { src: './src/assets/logo.svg', alt: '' },
       favicon: '/favicon.svg',
+      lastUpdated: true,
+      editLink: {
+        baseUrl: 'https://github.com/redlynxlabs/code-terraform-docs/edit/main/',
+      },
+      head: [
+        { tag: 'meta', attrs: { property: 'og:image', content: 'https://terraform.wiki/og.png' } },
+        { tag: 'meta', attrs: { property: 'og:image:width', content: '1200' } },
+        { tag: 'meta', attrs: { property: 'og:image:height', content: '630' } },
+        { tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' } },
+        { tag: 'meta', attrs: { name: 'twitter:image', content: 'https://terraform.wiki/og.png' } },
+      ],
       social: [
         {
           icon: 'github',

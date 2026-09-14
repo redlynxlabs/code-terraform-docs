@@ -25,6 +25,9 @@
 FROM node:22-alpine AS build
 WORKDIR /app
 ENV ASTRO_TELEMETRY_DISABLED=1
+# git powers Starlight's "last updated" page footers (repo history is in the
+# build context on purpose; see .dockerignore)
+RUN apk add --no-cache git
 
 # dependency layer (cached until package files change)
 COPY package.json package-lock.json ./

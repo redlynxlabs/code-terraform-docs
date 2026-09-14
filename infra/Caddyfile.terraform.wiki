@@ -21,7 +21,7 @@
 #      services:
 #        caddy:
 #          volumes:
-#            - /srv/terraform-wiki:/srv/terraform-wiki:ro
+#            - /opt/terraform-wiki:/opt/terraform-wiki:ro
 #
 # 2) Add this block to your Caddyfile, then: docker compose exec caddy caddy reload
 #    (or docker compose restart caddy)
@@ -30,7 +30,7 @@
 #    at the server. Caddy provisions HTTPS automatically once DNS resolves.
 
 terraform.wiki {
-	root * /srv/terraform-wiki
+	root * /opt/terraform-wiki
 	encode
 	file_server
 

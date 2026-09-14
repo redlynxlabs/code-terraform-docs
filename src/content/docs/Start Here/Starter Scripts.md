@@ -5,6 +5,11 @@ tags:
 aliases:
   - Copy-Paste Scripts
 title: "Starter Scripts"
+sidebar:
+  order: 2
+  badge:
+    text: Copy-paste
+    variant: tip
 ---
 
 Copy-paste scripts for every early system, in the order the [[Beginner Roadmap]] hits them. Each one says **which machine it runs on**: open that machine's card, open its script editor, paste, press Run. Change anything in `CAPITALS` or quoted ids to match your base (a machine's exact id is under the ⓘ on its card).

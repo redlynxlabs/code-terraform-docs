@@ -6,7 +6,7 @@ set -euo pipefail
 
 HOST="your.server.example"     # VPS hostname or IP
 USER="deploy"                  # SSH user
-DEST="/srv/terraform-wiki"     # host path mounted into the Caddy container
+DEST="/opt/terraform-wiki"     # host path mounted into the edge Caddy container
 
 npm run build
 

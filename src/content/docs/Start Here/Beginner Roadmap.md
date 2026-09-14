@@ -6,6 +6,11 @@ aliases:
   - Roadmap
   - Quick Start
 title: "Beginner Roadmap"
+sidebar:
+  order: 1
+  badge:
+    text: Beginner
+    variant: success
 ---
 
 The whole game on one page: what to do next, in order, with just enough to get each phase going. Every step links to the page that goes deep. The in-game First Contact tutorial (boot, power, sensors, uplink) covers phase 0; this picks up right after, when you have **2,500 credits** and the Shop unlocked.

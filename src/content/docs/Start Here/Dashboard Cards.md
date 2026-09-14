@@ -5,6 +5,11 @@ tags:
 aliases:
   - Dashboard Suite
 title: "Dashboard Cards"
+sidebar:
+  order: 3
+  badge:
+    text: Suite
+    variant: note
 ---
 
 A copy-paste suite for the [[Control Room]]. Create each with **+ New Card**, pick the size named in its header, paste, run. Three rules for every card: no `sleep()` needed (the interpreter repaints once per tick), always `panel.clear()` first, and cards have no `self`, so they read everything but command only through **shared authorities** (`power_control`, `shop`, `comms`, `inventory`, `atmosphere`). Full widget reference: [[Panel API]]. Edit the machine ids to match your base (the ⓘ on each machine card shows its id).
