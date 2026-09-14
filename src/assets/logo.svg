@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- terraform.wiki mark: frozen planet, orbit, first growth -->
+  <circle cx="16" cy="18" r="9" fill="#0e2e20" stroke="#2fbf7a" stroke-width="2"/>
+  <!-- terraced latitude bands -->
+  <path d="M8.6 14.5h14.8M7.2 18.5h17.6M8.9 22.5h14.2" stroke="#2fbf7a" stroke-width="1.1" opacity="0.55" fill="none"/>
+  <!-- orbit ring -->
+  <path d="M2.4 21.8c4.4 3.4 12.5 4.4 19.9 2.2 7-2.1 10.4-6 7.4-9.1" fill="none" stroke="#6fc7e8" stroke-width="1.6" stroke-linecap="round" opacity="0.9"/>
+  <!-- sprout -->
+  <path d="M16 9V4.8" stroke="#9ff0c3" stroke-width="2" stroke-linecap="round"/>
+  <path d="M16 5.2c0-2.4 2-3.8 4.4-3.8 0 2.4-2 3.8-4.4 3.8Z" fill="#9ff0c3"/>
+  <path d="M16 7.4c0-1.9-1.6-3-3.5-3 0 1.9 1.6 3 3.5 3Z" fill="#2fbf7a"/>
+</svg>

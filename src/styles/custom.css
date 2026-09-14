@@ -1,0 +1,278 @@
+/* ==========================================================================
+   terraform.wiki theme: "first growth on a frozen world"
+   Base: cold deep-space slate (Nocturna at night).
+   Accent: terraforming green (the life you are seeding).
+   Support: ice cyan (sensors, orbits, cold machinery).
+   Fonts: Space Grotesk (display), JetBrains Mono (terminal), system sans body.
+   ========================================================================== */
+
+/* ---- Palette: dark (default) --------------------------------------------- */
+:root {
+  --sl-color-accent-low: #0f3a27;
+  --sl-color-accent: #1f9d63;
+  --sl-color-accent-high: #9df0c4;
+
+  --sl-color-white: #eef5f8;
+  --sl-color-gray-1: #d5e2e8;
+  --sl-color-gray-2: #a8bcc6;
+  --sl-color-gray-3: #718a97;
+  --sl-color-gray-4: #415562;
+  --sl-color-gray-5: #27343d;
+  --sl-color-gray-6: #141e26;
+  --sl-color-black: #0b1218;
+
+  --tw-ice: #7fd6f2;
+  --tw-ice-dim: #4a8ba3;
+  --tw-terminal-bg: #081410;
+  --tw-terminal-ink: #7fe0ab;
+  --tw-glow: rgba(31, 157, 99, 0.35);
+
+  --sl-font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
+}
+
+/* ---- Palette: light ------------------------------------------------------ */
+:root[data-theme='light'] {
+  --sl-color-accent-low: #cdeeda;
+  --sl-color-accent: #157a4b;
+  --sl-color-accent-high: #0c3d26;
+
+  --sl-color-white: #10202a;
+  --sl-color-gray-1: #1d3140;
+  --sl-color-gray-2: #3a4f5c;
+  --sl-color-gray-3: #5d7482;
+  --sl-color-gray-4: #90a5b1;
+  --sl-color-gray-5: #ccdae1;
+  --sl-color-gray-6: #ecf3f6;
+  --sl-color-gray-7: #f5f9fb;
+  --sl-color-black: #fcfdfe;
+
+  --tw-ice: #16759c;
+  --tw-ice-dim: #5e93a8;
+  --tw-terminal-bg: #0c1a14;
+  --tw-terminal-ink: #8ae4b3;
+  --tw-glow: rgba(21, 122, 75, 0.18);
+}
+
+/* ---- Typography ---------------------------------------------------------- */
+.site-title,
+.hero h1,
+.sl-markdown-content :is(h1, h2, h3, h4, h5),
+h1[data-page-title],
+.card .title {
+  font-family: 'Space Grotesk', var(--sl-font-system, ui-sans-serif), sans-serif;
+  letter-spacing: -0.015em;
+}
+
+.sl-markdown-content h2 {
+  border-bottom: 1px solid var(--sl-color-gray-5);
+  padding-bottom: 0.3em;
+}
+
+/* method headings (### .method()) read as code identifiers */
+.sl-markdown-content h3 code,
+.sl-markdown-content h3 {
+  font-family: var(--sl-font-mono);
+  letter-spacing: 0;
+}
+
+.sl-markdown-content code:not(pre code) {
+  background: color-mix(in srgb, var(--sl-color-accent-low) 45%, var(--sl-color-gray-6));
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.3rem;
+  padding: 0.1em 0.35em;
+}
+
+::selection {
+  background: var(--sl-color-accent-low);
+}
+
+/* ---- Landing hero: aurora over the ice ----------------------------------- */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.hero .sl-flex {
+  justify-content: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -6rem -10rem auto -10rem;
+  height: 32rem;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(38rem 16rem at 28% 30%, var(--tw-glow), transparent 65%),
+    radial-gradient(30rem 14rem at 75% 15%, rgba(127, 214, 242, 0.16), transparent 65%);
+  filter: blur(6px);
+}
+
+.hero h1 {
+  background: linear-gradient(92deg, var(--sl-color-accent-high) 15%, var(--tw-ice) 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* faint starfield behind splash pages */
+.page:has(.hero) {
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, rgba(238, 245, 248, 0.5), transparent 100%),
+    radial-gradient(1px 1px at 34% 62%, rgba(238, 245, 248, 0.28), transparent 100%),
+    radial-gradient(1.5px 1.5px at 58% 25%, rgba(127, 214, 242, 0.4), transparent 100%),
+    radial-gradient(1px 1px at 72% 74%, rgba(238, 245, 248, 0.3), transparent 100%),
+    radial-gradient(1px 1px at 88% 40%, rgba(238, 245, 248, 0.45), transparent 100%),
+    radial-gradient(1.5px 1.5px at 45% 88%, rgba(159, 240, 195, 0.3), transparent 100%),
+    radial-gradient(1px 1px at 8% 85%, rgba(127, 214, 242, 0.3), transparent 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 100vh;
+}
+
+:root[data-theme='light'] .page:has(.hero) {
+  background-image: none;
+}
+
+/* ---- Boot log terminal ---------------------------------------------------- */
+pre.boot-log {
+  font-family: var(--sl-font-mono);
+  font-size: var(--sl-text-sm);
+  line-height: 1.75;
+  color: var(--tw-terminal-ink);
+  background: var(--tw-terminal-bg);
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 40%, transparent);
+  border-radius: 0.6rem;
+  padding: 1rem 1.4rem;
+  margin-inline: auto;
+  width: fit-content;
+  box-shadow: 0 0 32px var(--tw-glow), inset 0 0 24px rgba(0, 0, 0, 0.35);
+}
+
+pre.boot-log::after {
+  content: '_';
+  animation: tw-blink 1.1s steps(1) infinite;
+}
+
+@keyframes tw-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ---- Cards ---------------------------------------------------------------- */
+.card {
+  background: color-mix(in srgb, var(--sl-color-gray-6) 82%, transparent);
+  border-color: var(--sl-color-gray-5);
+  border-radius: 0.6rem;
+  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.card:hover {
+  border-color: var(--sl-color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px var(--tw-glow);
+}
+
+/* ---- Callouts (Obsidian > [!type], markup from remark-callouts) ----------- */
+blockquote.callout {
+  border: 1px solid var(--sl-color-gray-5);
+  border-inline-start: 3px solid var(--callout-accent, var(--sl-color-accent));
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--callout-accent, var(--sl-color-accent)) 7%, var(--sl-color-gray-6));
+  padding: 0.8rem 1.1rem;
+  margin-block: 1.25rem;
+}
+
+blockquote.callout p {
+  margin-block: 0.35rem;
+}
+
+blockquote.callout .callout-title {
+  margin-block: 0 0.4rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--sl-text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--callout-accent, var(--sl-color-accent));
+}
+
+blockquote.callout.callout--tip,
+blockquote.callout.callout--hint {
+  --callout-accent: var(--sl-color-green, #2fbf7a);
+}
+
+blockquote.callout.callout--info,
+blockquote.callout.callout--note {
+  --callout-accent: var(--tw-ice);
+}
+
+blockquote.callout.callout--warning,
+blockquote.callout.callout--caution {
+  --callout-accent: var(--sl-color-orange, #d9822b);
+}
+
+blockquote.callout.callout--danger,
+blockquote.callout.callout--error {
+  --callout-accent: var(--sl-color-red, #d1493f);
+}
+
+blockquote.callout.callout--example {
+  --callout-accent: var(--sl-color-purple, #a07bd8);
+}
+
+/* ---- Tables (the wiki is full of outcome tables) --------------------------- */
+.sl-markdown-content table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.sl-markdown-content th {
+  background: var(--sl-color-gray-6);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--sl-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sl-color-gray-2);
+}
+
+.sl-markdown-content tr:nth-child(2n) td {
+  background: color-mix(in srgb, var(--sl-color-gray-6) 55%, transparent);
+}
+
+/* ---- Sidebar -------------------------------------------------------------- */
+.sidebar-content a[aria-current='page'] {
+  border-inline-start: 2px solid var(--sl-color-accent);
+  font-weight: 600;
+}
+
+/* ---- Misc ------------------------------------------------------------------ */
+.hero-footer {
+  display: block;
+  text-align: center;
+  margin-top: 3rem;
+  opacity: 0.65;
+  font-size: var(--sl-text-sm);
+}
+
+.sl-markdown-content hr {
+  border-color: var(--sl-color-gray-5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  pre.boot-log::after {
+    animation: none;
+  }
+  .card,
+  .card:hover {
+    transform: none;
+    transition: none;
+  }
+}

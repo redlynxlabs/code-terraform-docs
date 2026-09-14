@@ -1,0 +1,48 @@
+---
+title: "Field docs for Code: Terraform"
+description: "Unofficial field documentation for Code: Terraform. Every machine API, every type, every recipe, readable outside the game."
+template: splash
+hero:
+  title: "terraform.wiki"
+  tagline: "Field documentation for Code: Terraform. Every machine API, every object type, every recipe and research threshold, readable outside the game and searchable at alt-tab speed."
+  actions:
+    - text: Open the wiki
+      link: /home/
+      icon: right-arrow
+    - text: Beginner Roadmap
+      link: /start-here/beginner-roadmap/
+      icon: rocket
+      variant: secondary
+    - text: GitHub
+      link: https://github.com/redlynxlabs/code-terraform-docs
+      icon: github
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<pre class="boot-log">{`$ uplink --sync nocturna/docs
+> game build ......... 441ad76
+> wiki pages ............. 330
+> crosslinks ........... 2250+
+> broken links ............. 0
+> status ........ TERRAFORMING`}</pre>
+
+<CardGrid stagger>
+  <Card title="Start scripting" icon="rocket">
+    New to the game or to Python? The [Beginner Roadmap](/start-here/beginner-roadmap/) walks the whole game in seven phases, and [Starter Scripts](/start-here/starter-scripts/) has a working, commented script for every early machine.
+  </Card>
+  <Card title="Machine APIs" icon="setting">
+    Every machine, one page each: methods, `SELF ONLY` flags, and full outcome tables. Begin at the [Components Index](/components/components-index/).
+  </Card>
+  <Card title="Types and results" icon="open-book">
+    Every API object type, including all 15 contract puzzles and the complete result-status vocabulary. See the [Types Index](/types/types-index/) and [Command Results](/start-here/command-results/).
+  </Card>
+  <Card title="The Database" icon="information">
+    Recipes, equipment catalogs, items, fluids, and the full [research tree with thresholds](/database/research-database/).
+  </Card>
+</CardGrid>
+
+<footer class="hero-footer">
+  Unofficial player-made reference. All game content belongs to the developers of Code: Terraform.
+</footer>

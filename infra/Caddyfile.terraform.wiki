@@ -1,0 +1,25 @@
+# terraform.wiki site block for an existing dockerized Caddy.
+#
+# 1) Mount the deploy path into the Caddy container (docker-compose.yml):
+#
+#      services:
+#        caddy:
+#          volumes:
+#            - /srv/terraform-wiki:/srv/terraform-wiki:ro
+#
+# 2) Add this block to your Caddyfile, then: docker compose exec caddy caddy reload
+#    (or docker compose restart caddy)
+#
+# 3) DNS: point an A record (and AAAA if you have IPv6) for terraform.wiki
+#    at the server. Caddy provisions HTTPS automatically once DNS resolves.
+
+terraform.wiki {
+	root * /srv/terraform-wiki
+	encode
+	file_server
+
+	handle_errors {
+		rewrite * /404.html
+		file_server
+	}
+}

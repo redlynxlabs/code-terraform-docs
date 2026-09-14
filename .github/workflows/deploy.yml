@@ -1,0 +1,55 @@
+# Build check on every push; deploy to the VPS only when triggered by hand.
+# To go fully automatic later: move the deploy job's trigger by adding
+#   push: { branches: [main] }
+# under `on:` and gating deploy with `if: github.event_name != 'pull_request'`.
+# Required repo secrets for deploy: REMOTE_HOST, REMOTE_USER, REMOTE_PATH,
+# REMOTE_PRIVATE_KEY (an SSH key authorized on the VPS).
+name: build
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: "Deploy to the VPS after building"
+        type: boolean
+        default: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
+        env:
+          STRICT_LINKS: "1"
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'workflow_dispatch' && inputs.deploy
+        with:
+          name: dist
+          path: dist/
+
+  deploy:
+    needs: build
+    if: github.event_name == 'workflow_dispatch' && inputs.deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: burnett01/rsync-deployments@v9
+        with:
+          switches: -avzr --delete
+          path: dist/
+          remote_path: ${{ secrets.REMOTE_PATH }}
+          remote_host: ${{ secrets.REMOTE_HOST }}
+          remote_user: ${{ secrets.REMOTE_USER }}
+          remote_key: ${{ secrets.REMOTE_PRIVATE_KEY }}
