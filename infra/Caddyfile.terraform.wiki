@@ -1,5 +1,21 @@
 # terraform.wiki site block for an existing dockerized Caddy.
 #
+# TWO WAYS TO SERVE IT. Pick one:
+#
+# (A) Container model (preferred with a compose stack): build the repo's
+#     Dockerfile as a `wiki` service in the same compose project, then the
+#     edge block is just a proxy:
+#
+#       terraform.wiki {
+#           encode
+#           reverse_proxy wiki:80
+#       }
+#
+#     Update flow on the server: git pull && docker compose up -d --build wiki
+#
+# (B) Volume model (rsync/tar deploys via scripts/deploy.sh): mount a host
+#     path into the edge Caddy and use the file_server block below.
+#
 # 1) Mount the deploy path into the Caddy container (docker-compose.yml):
 #
 #      services:

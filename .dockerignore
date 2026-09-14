@@ -1,0 +1,13 @@
+# keep the build context small and the image honest
+node_modules
+dist
+.astro
+.git
+.github
+.claude
+.obsidian
+src/content/docs/.obsidian
+*.pdf
+Thumbs.db
+.DS_Store
+desktop.ini
